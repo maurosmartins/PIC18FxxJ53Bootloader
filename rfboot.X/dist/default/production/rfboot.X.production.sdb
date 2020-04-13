@@ -1,0 +1,343 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F27J53 ]
+[d frameptr 4065 ]
+"77 D:\Dropbox\Projectos\RFBootloader\FW\rfboot.X\main.c
+[e E9682 sysStates `uc
+bootloaderMode 0
+errorMode 0
+]
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 3 0 ]
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"118 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\USART\u2open.c
+[v _Open2USART Open2USART `(v  1 e 0 0 ]
+"82 D:\Dropbox\Projectos\RFBootloader\FW\rfboot.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"142
+[v _u8GetDataBlock u8GetDataBlock `(uc  1 e 1 0 ]
+"202
+[v _u8GetCodeLen u8GetCodeLen `(uc  1 e 1 0 ]
+"217
+[v _init init `(v  1 e 0 0 ]
+"247
+[v _vWriteFlashBlock vWriteFlashBlock `(v  1 e 0 0 ]
+"274
+[v _putch putch `(v  1 e 0 0 ]
+"281
+[v _u8getch u8getch `(uc  1 e 1 0 ]
+"297
+[v _vEraseFlash vEraseFlash `(v  1 e 0 0 ]
+"303
+[v _vEraseBlock vEraseBlock `(v  1 e 0 0 ]
+[s S172 . 1 `uc 1 IOLOCK 1 0 :1:0 
+]
+"1078 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f27j53.h
+[u S174 . 1 `S172 1 . 1 0 ]
+[v _PPSCONbits PPSCONbits `VES174  1 e 1 @3775 ]
+"1105
+[v _RPOR3 RPOR3 `VEuc  1 e 1 @3779 ]
+"1255
+[v _RPINR16 RPINR16 `VEuc  1 e 1 @3831 ]
+"5624
+[v _ANCON0 ANCON0 `VEuc  1 e 1 @3912 ]
+"5667
+[v _ANCON1 ANCON1 `VEuc  1 e 1 @3913 ]
+"7902
+[v _SPBRGH2 SPBRGH2 `VEuc  1 e 1 @3965 ]
+[s S32 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"9703
+[s S41 . 1 `uc 1 LA0 1 0 :1:0 
+]
+[s S43 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 LA1 1 0 :1:1 
+]
+[s S46 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LA2 1 0 :1:2 
+]
+[s S49 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LA3 1 0 :1:3 
+]
+[s S52 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LA4 1 0 :1:4 
+]
+[s S55 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LA5 1 0 :1:5 
+]
+[s S58 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 LA6 1 0 :1:6 
+]
+[s S61 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 LA7 1 0 :1:7 
+]
+[u S64 . 1 `S32 1 . 1 0 `S41 1 . 1 0 `S43 1 . 1 0 `S46 1 . 1 0 `S49 1 . 1 0 `S52 1 . 1 0 `S55 1 . 1 0 `S58 1 . 1 0 `S61 1 . 1 0 ]
+[v _LATAbits LATAbits `VES64  1 e 1 @3977 ]
+"10269
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"10325
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"10835
+[v _RCSTA2 RCSTA2 `VEuc  1 e 1 @3996 ]
+[s S346 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"10873
+[s S355 . 1 `uc 1 RX9D2 1 0 :1:0 
+`uc 1 OERR2 1 0 :1:1 
+`uc 1 FERR2 1 0 :1:2 
+`uc 1 ADDEN2 1 0 :1:3 
+`uc 1 CREN2 1 0 :1:4 
+`uc 1 SREN2 1 0 :1:5 
+`uc 1 RX92 1 0 :1:6 
+`uc 1 SPEN2 1 0 :1:7 
+]
+[s S364 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_92 1 0 :1:6 
+]
+[s S367 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC92 1 0 :1:6 
+]
+[s S370 . 1 `uc 1 RCD82 1 0 :1:0 
+]
+[u S372 . 1 `S346 1 . 1 0 `S355 1 . 1 0 `S364 1 . 1 0 `S367 1 . 1 0 `S370 1 . 1 0 ]
+[v _RCSTA2bits RCSTA2bits `VES372  1 e 1 @3996 ]
+[s S405 . 1 `uc 1 RTCCIE 1 0 :1:0 
+`uc 1 TMR3GIE 1 0 :1:1 
+`uc 1 CTMUIE 1 0 :1:2 
+`uc 1 TMR4IE 1 0 :1:3 
+`uc 1 TX2IE 1 0 :1:4 
+`uc 1 RC2IE 1 0 :1:5 
+`uc 1 BCL2IE 1 0 :1:6 
+`uc 1 SSP2IE 1 0 :1:7 
+]
+"11499
+[s S414 . 1 `uc 1 RXB0IE 1 0 :1:0 
+]
+[s S416 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXB1IE 1 0 :1:1 
+]
+[s S419 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIE 1 0 :1:1 
+]
+[s S422 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TXB0IE 1 0 :1:2 
+]
+[s S425 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 TXB1IE 1 0 :1:3 
+]
+[s S428 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXB2IE 1 0 :1:4 
+]
+[s S431 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXBNIE 1 0 :1:4 
+]
+[u S434 . 1 `S405 1 . 1 0 `S414 1 . 1 0 `S416 1 . 1 0 `S419 1 . 1 0 `S422 1 . 1 0 `S425 1 . 1 0 `S428 1 . 1 0 `S431 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES434  1 e 1 @4003 ]
+[s S197 . 1 `uc 1 RTCCIF 1 0 :1:0 
+`uc 1 TMR3GIF 1 0 :1:1 
+`uc 1 CTMUIF 1 0 :1:2 
+`uc 1 TMR4IF 1 0 :1:3 
+`uc 1 TX2IF 1 0 :1:4 
+`uc 1 RC2IF 1 0 :1:5 
+`uc 1 BCL2IF 1 0 :1:6 
+`uc 1 SSP2IF 1 0 :1:7 
+]
+"11603
+[s S206 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIF 1 0 :1:1 
+]
+[s S209 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXBNIF 1 0 :1:4 
+]
+[u S212 . 1 `S197 1 . 1 0 `S206 1 . 1 0 `S209 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES212  1 e 1 @4004 ]
+"11780
+[v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
+"11799
+[v _TXSTA2 TXSTA2 `VEuc  1 e 1 @4008 ]
+[s S294 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"11833
+[s S303 . 1 `uc 1 TX9D2 1 0 :1:0 
+`uc 1 TRMT2 1 0 :1:1 
+`uc 1 BRGH2 1 0 :1:2 
+`uc 1 SENDB2 1 0 :1:3 
+`uc 1 SYNC2 1 0 :1:4 
+`uc 1 TXEN2 1 0 :1:5 
+`uc 1 TX92 1 0 :1:6 
+`uc 1 CSRC2 1 0 :1:7 
+]
+[s S312 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_92 1 0 :1:6 
+]
+[s S315 . 1 `uc 1 TXD82 1 0 :1:0 
+]
+[u S317 . 1 `S294 1 . 1 0 `S303 1 . 1 0 `S312 1 . 1 0 `S315 1 . 1 0 ]
+[v _TXSTA2bits TXSTA2bits `VES317  1 e 1 @4008 ]
+"11927
+[v _TXREG2 TXREG2 `VEuc  1 e 1 @4009 ]
+"11946
+[v _RCREG2 RCREG2 `VEuc  1 e 1 @4010 ]
+"11965
+[v _SPBRG2 SPBRG2 `VEuc  1 e 1 @4011 ]
+[s S141 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 FLTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+`uc 1 IDLEN 1 0 :1:7 
+]
+"17443
+[s S147 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S154 . 1 `S141 1 . 1 0 `S147 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES154  1 e 1 @4051 ]
+"18469
+[v _TABLAT TABLAT `VEuc  1 e 1 @4085 ]
+"18496
+[v _TBLPTRL TBLPTRL `VEuc  1 e 1 @4086 ]
+"18515
+[v _TBLPTRH TBLPTRH `VEuc  1 e 1 @4087 ]
+"18534
+[v _TBLPTRU TBLPTRU `VEuc  1 e 1 @4088 ]
+"21172
+[v _TX2IF TX2IF `VEb  1 e 0 @32036 ]
+"70 D:\Dropbox\Projectos\RFBootloader\FW\rfboot.X\main.c
+[v _FlashData FlashData `VE[64]uc  1 e 64 0 ]
+[u S21 . 4 `ul 1 CodeLen 4 0 `[4]uc 1 CodeLena 4 0 ]
+"74
+[v _u32CodeLen u32CodeLen `S21  1 e 4 0 ]
+"75
+[v _address address `VEul  1 e 4 0 ]
+"82
+[v _main main `(v  1 e 0 0 ]
+{
+"83
+[v main@datablocklen datablocklen `uc  1 a 1 16 ]
+[v main@err err `uc  1 a 1 15 ]
+[v main@counter counter `uc  1 a 1 14 ]
+[v main@ch ch `uc  1 a 1 13 ]
+"139
+} 0
+"247
+[v _vWriteFlashBlock vWriteFlashBlock `(v  1 e 0 0 ]
+{
+"248
+[v vWriteFlashBlock@i i `uc  1 a 1 5 ]
+"247
+[v vWriteFlashBlock@addr addr `ul  1 p 4 0 ]
+[v vWriteFlashBlock@u8FlashBlockLen u8FlashBlockLen `uc  1 p 1 4 ]
+"272
+} 0
+"297
+[v _vEraseFlash vEraseFlash `(v  1 e 0 0 ]
+{
+"301
+} 0
+"303
+[v _vEraseBlock vEraseBlock `(v  1 e 0 0 ]
+{
+[v vEraseBlock@addr addr `ul  1 p 4 0 ]
+"320
+} 0
+"142
+[v _u8GetDataBlock u8GetDataBlock `(uc  1 e 1 0 ]
+{
+"144
+[v u8GetDataBlock@err err `uc  1 a 1 8 ]
+"146
+[v u8GetDataBlock@datablocklen datablocklen `uc  1 a 1 7 ]
+"145
+[v u8GetDataBlock@ch ch `uc  1 a 1 6 ]
+"143
+[v u8GetDataBlock@j j `uc  1 a 1 5 ]
+"176
+} 0
+"202
+[v _u8GetCodeLen u8GetCodeLen `(uc  1 e 1 0 ]
+{
+"203
+[v u8GetCodeLen@j j `uc  1 a 1 7 ]
+"204
+[v u8GetCodeLen@err err `uc  1 a 1 6 ]
+"214
+} 0
+"281
+[v _u8getch u8getch `(uc  1 e 1 0 ]
+{
+"282
+[v u8getch@i i `ui  1 a 2 3 ]
+"283
+[v u8getch@ch ch `uc  1 a 1 2 ]
+"281
+[v u8getch@error error `*.39uc  1 p 2 0 ]
+"295
+} 0
+"274
+[v _putch putch `(v  1 e 0 0 ]
+{
+[v putch@c c `uc  1 a 1 wreg ]
+[v putch@c c `uc  1 a 1 wreg ]
+[v putch@c c `uc  1 a 1 0 ]
+"279
+} 0
+"217
+[v _init init `(v  1 e 0 0 ]
+{
+"245
+} 0
+"118 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\USART\u2open.c
+[v _Open2USART Open2USART `(v  1 e 0 0 ]
+{
+[v Open2USART@config config `uc  1 a 1 wreg ]
+[v Open2USART@config config `uc  1 a 1 wreg ]
+[v Open2USART@spbrg spbrg `ui  1 p 2 0 ]
+"120
+[v Open2USART@config config `uc  1 a 1 2 ]
+"165
+} 0

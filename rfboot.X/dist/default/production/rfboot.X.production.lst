@@ -1,0 +1,1738 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.34 build -361300703 
+                                                                                               Sat Apr 11 15:29:21 2020
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209
+     1                           	processor	18F27J53
+     2                           	fnconf	rparam,??,?,0
+     3                           	opt	pw 120
+     4                           	opt	lm
+     5                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1
+     8                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    18                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1
+    19                           	psect	rparam,global,class=COMRAM,space=1,delta=1
+    20  0000                     _PPSCONbits	set	3775
+    21  0000                     _RPINR16	set	3831
+    22  0000                     _RPOR3	set	3779
+    23  0000                     _ANCON0	set	3912
+    24  0000                     _ANCON1	set	3913
+    25  0000                     _EECON2	set	4007
+    26  0000                     _LATAbits	set	3977
+    27  0000                     _OSCCONbits	set	4051
+    28  0000                     _PIE3bits	set	4003
+    29  0000                     _PIR3bits	set	4004
+    30  0000                     _RCREG2	set	4010
+    31  0000                     _RCSTA2	set	3996
+    32  0000                     _RCSTA2bits	set	3996
+    33  0000                     _SPBRG2	set	4011
+    34  0000                     _SPBRGH2	set	3965
+    35  0000                     _TABLAT	set	4085
+    36  0000                     _TBLPTRH	set	4087
+    37  0000                     _TBLPTRL	set	4086
+    38  0000                     _TBLPTRU	set	4088
+    39  0000                     _TRISA	set	3986
+    40  0000                     _TRISB	set	3987
+    41  0000                     _TXREG2	set	4009
+    42  0000                     _TXSTA2	set	4008
+    43  0000                     _TXSTA2bits	set	4008
+    44  0000                     _TX2IF	set	32036
+    45                           
+    46 ;;
+    47 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+    48 ;;
+    49 ;; *************** function _main *****************
+    50 ;; Defined at:
+    51 ;;		line 82 in file "main.c"
+    52 ;; Parameters:    Size  Location     Type
+    53 ;;		None
+    54 ;; Auto vars:     Size  Location     Type
+    55 ;;  datablocklen    1   16[COMRAM] unsigned char 
+    56 ;;  err             1   15[COMRAM] unsigned char 
+    57 ;;  counter         1   14[COMRAM] unsigned char 
+    58 ;;  ch              1   13[COMRAM] unsigned char 
+    59 ;; Return value:  Size  Location     Type
+    60 ;;		None               void
+    61 ;; Registers used:
+    62 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+    63 ;; Tracked objects:
+    64 ;;		On entry : 0/0
+    65 ;;		On exit  : 0/0
+    66 ;;		Unchanged: 0/0
+    67 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+    68 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+    69 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+    70 ;;      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+    71 ;;      Totals:         8       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+    72 ;;Total ram usage:        8 bytes
+    73 ;; Hardware stack levels required when called:    2
+    74 ;; This function calls:
+    75 ;;		_init
+    76 ;;		_putch
+    77 ;;		_u8GetCodeLen
+    78 ;;		_u8GetDataBlock
+    79 ;;		_u8getch
+    80 ;;		_vEraseFlash
+    81 ;;		_vWriteFlashBlock
+    82 ;; This function is called by:
+    83 ;;		Startup code after reset
+    84 ;; This function uses a non-reentrant model
+    85 ;;
+    86                           
+    87                           	psect	text0
+    88  00030C                     __ptext0:
+    89                           	opt stack 0
+    90  00030C                     _main:
+    91                           	opt stack 29
+    92                           
+    93                           ;main.c: 83: uint8_t err, ch, counter, datablocklen;
+    94                           ;main.c: 85: init();
+    95                           
+    96                           ;incstack = 0
+    97  00030C  EC52  F000         	call	_init	;wreg free
+    98                           
+    99                           ;main.c: 86: ch = RCREG2;
+   100  000310  CFAA F057          	movff	4010,main@ch	;volatile
+   101                           
+   102                           ;main.c: 97: counter = 0;
+   103  000314  0E00               	movlw	0
+   104  000316  6E58               	movwf	main@counter,c
+   105                           
+   106                           ;main.c: 101: LATAbits.LATA0 = 0;
+   107  000318  9089               	bcf	3977,0,c	;volatile
+   108  00031A  D000               	goto	l1094
+   109  00031C                     l1094:
+   110                           
+   111                           ;main.c: 103: ch = u8getch(&err);
+   112  00031C  0E59               	movlw	low main@err
+   113  00031E  6E4A               	movwf	u8getch@error,c
+   114  000320  0E00               	movlw	high main@err
+   115  000322  6E4B               	movwf	u8getch@error+1,c
+   116  000324  EC9A  F000         	call	_u8getch	;wreg free
+   117  000328  6E57               	movwf	main@ch,c
+   118                           
+   119                           ;main.c: 104: if( (err == 0) && (ch=='B') ){
+   120  00032A  5059               	movf	main@err,w,c
+   121  00032C  A4D8               	btfss	status,2,c
+   122  00032E  D008               	goto	l1102
+   123  000330  0E42               	movlw	66
+   124  000332  1857               	xorwf	main@ch,w,c
+   125  000334  A4D8               	btfss	status,2,c
+   126  000336  D004               	goto	l1102
+   127                           
+   128                           ;main.c: 105: putch('A');
+   129  000338  0E41               	movlw	65
+   130  00033A  EC31  F000         	call	_putch
+   131                           
+   132                           ;main.c: 106: break;
+   133  00033E  D018               	goto	l1108
+   134  000340                     l1102:
+   135                           
+   136                           ;main.c: 107: }
+   137                           ;main.c: 108: _delay((unsigned long)((10)*(8000000/4000.0)));
+   138  000340  0E1A               	movlw	26
+   139  000342  6E53               	movwf	??_main& (0+255),c
+   140  000344  0EF8               	movlw	248
+   141  000346                     u527:
+   142  000346  2EE8               	decfsz	wreg,f,c
+   143  000348  D7FE               	goto	u527
+   144  00034A  2E53               	decfsz	??_main& (0+255),f,c
+   145  00034C  D7FC               	goto	u527
+   146  00034E  D000               	nop2	
+   147                           
+   148                           ;main.c: 109: _delay((unsigned long)((10)*(8000000/4000.0)));
+   149  000350  0E1A               	movlw	26
+   150  000352  6E53               	movwf	??_main& (0+255),c
+   151  000354  0EF8               	movlw	248
+   152  000356                     u537:
+   153  000356  2EE8               	decfsz	wreg,f,c
+   154  000358  D7FE               	goto	u537
+   155  00035A  2E53               	decfsz	??_main& (0+255),f,c
+   156  00035C  D7FC               	goto	u537
+   157  00035E  D000               	nop2	
+   158                           
+   159                           ;main.c: 110: counter++;
+   160  000360  2A58               	incf	main@counter,f,c
+   161                           
+   162                           ;main.c: 111: if(counter == 5){
+   163  000362  0E05               	movlw	5
+   164  000364  1858               	xorwf	main@counter,w,c
+   165  000366  A4D8               	btfss	status,2,c
+   166  000368  D7D9               	goto	l1094
+   167  00036A  EF00 F002          	goto	1024	;# 
+   168  00036E  D7D6               	goto	l1094
+   169  000370                     l1108:
+   170                           
+   171                           ;main.c: 114: }
+   172                           ;main.c: 115: }
+   173                           ;main.c: 117: u8GetCodeLen();
+   174  000370  EC75  F000         	call	_u8GetCodeLen	;wreg free
+   175                           
+   176                           ;main.c: 118: vEraseFlash();
+   177  000374  ECC2  F000         	call	_vEraseFlash	;wreg free
+   178                           
+   179                           ;main.c: 119: putch('B');
+   180  000378  0E42               	movlw	66
+   181  00037A  EC31  F000         	call	_putch
+   182                           
+   183                           ;main.c: 121: address = 0x400u;
+   184  00037E  0E00               	movlw	0
+   185  000380  6E41               	movwf	_address,c	;volatile
+   186  000382  0E04               	movlw	4
+   187  000384  6E42               	movwf	_address+1,c	;volatile
+   188  000386  0E00               	movlw	0
+   189  000388  6E43               	movwf	_address+2,c	;volatile
+   190  00038A  0E00               	movlw	0
+   191  00038C  6E44               	movwf	_address+3,c	;volatile
+   192                           
+   193                           ;main.c: 124: while( address < (address+u32CodeLen.CodeLen) ){
+   194  00038E  D01E               	goto	l1126
+   195  000390                     l1116:
+   196                           
+   197                           ;main.c: 125: datablocklen = u8GetDataBlock();
+   198  000390  EC4F  F001         	call	_u8GetDataBlock	;wreg free
+   199  000394  6E5A               	movwf	main@datablocklen,c
+   200                           
+   201                           ;main.c: 126: if(datablocklen!=0){
+   202  000396  505A               	movf	main@datablocklen,w,c
+   203  000398  B4D8               	btfsc	status,2,c
+   204  00039A  D02E               	goto	l76
+   205                           
+   206                           ;main.c: 127: vWriteFlashBlock(address, datablocklen);
+   207  00039C  C041  F04A         	movff	_address,vWriteFlashBlock@addr	;volatile
+   208  0003A0  C042  F04B         	movff	_address+1,vWriteFlashBlock@addr+1	;volatile
+   209  0003A4  C043  F04C         	movff	_address+2,vWriteFlashBlock@addr+2	;volatile
+   210  0003A8  C044  F04D         	movff	_address+3,vWriteFlashBlock@addr+3	;volatile
+   211  0003AC  C05A  F04E         	movff	main@datablocklen,vWriteFlashBlock@u8FlashBlockLen
+   212  0003B0  ECEB  F000         	call	_vWriteFlashBlock	;wreg free
+   213                           
+   214                           ;main.c: 128: putch('C');
+   215  0003B4  0E43               	movlw	67
+   216  0003B6  EC31  F000         	call	_putch
+   217                           
+   218                           ;main.c: 129: address += datablocklen;
+   219  0003BA  505A               	movf	main@datablocklen,w,c
+   220  0003BC  2641               	addwf	_address,f,c	;volatile
+   221  0003BE  0E00               	movlw	0
+   222  0003C0  2242               	addwfc	_address+1,f,c	;volatile
+   223  0003C2  2243               	addwfc	_address+2,f,c	;volatile
+   224  0003C4  2244               	addwfc	_address+3,f,c	;volatile
+   225                           
+   226                           ;main.c: 130: }else{
+   227  0003C6  D002               	goto	l1126
+   228                           
+   229                           ;main.c: 131: break;
+   230  0003C8  D017               	goto	l76
+   231  0003CA  D000               	goto	l1126
+   232  0003CC                     l1126:
+   233  0003CC  5041               	movf	_address,w,c	;volatile
+   234  0003CE  2446               	addwf	_u32CodeLen,w,c
+   235  0003D0  6E53               	movwf	??_main& (0+255),c
+   236  0003D2  5042               	movf	_address+1,w,c	;volatile
+   237  0003D4  2047               	addwfc	_u32CodeLen+1,w,c
+   238  0003D6  6E54               	movwf	(??_main+1)& (0+255),c
+   239  0003D8  5043               	movf	_address+2,w,c	;volatile
+   240  0003DA  2048               	addwfc	_u32CodeLen+2,w,c
+   241  0003DC  6E55               	movwf	(??_main+2)& (0+255),c
+   242  0003DE  5044               	movf	_address+3,w,c	;volatile
+   243  0003E0  2049               	addwfc	_u32CodeLen+3,w,c
+   244  0003E2  6E56               	movwf	(??_main+3)& (0+255),c
+   245  0003E4  5053               	movf	??_main,w,c
+   246  0003E6  5C41               	subwf	_address,w,c	;volatile
+   247  0003E8  5054               	movf	??_main+1,w,c
+   248  0003EA  5842               	subwfb	_address+1,w,c	;volatile
+   249  0003EC  5055               	movf	??_main+2,w,c
+   250  0003EE  5843               	subwfb	_address+2,w,c	;volatile
+   251  0003F0  5056               	movf	??_main+3,w,c
+   252  0003F2  5844               	subwfb	_address+3,w,c	;volatile
+   253  0003F4  A0D8               	btfss	status,0,c
+   254  0003F6  D7CC               	goto	l1116
+   255  0003F8                     l76:
+   256  0003F8  EF00 F002          	goto	1024	;# 
+   257  0003FC  EF00  F000         	goto	start
+   258  000400                     __end_of_main:
+   259                           	opt stack 0
+   260                           wreg	equ	0xFE8
+   261                           status	equ	0xFD8
+   262                           
+   263                           	psect	cinit
+   264  000072                     __pcinit:
+   265                           	opt stack 0
+   266  000072                     start_initialization:
+   267                           	opt stack 0
+   268  000072                     __initialization:
+   269                           	opt stack 0
+   270                           
+   271                           ; Clear objects allocated to COMRAM (73 bytes)
+   272  000072  EE00  F001         	lfsr	0,__pbssCOMRAM
+   273  000076  0E49               	movlw	73
+   274  000078                     clear_0:
+   275  000078  6AEE               	clrf	postinc0,c
+   276  00007A  06E8               	decf	wreg,f,c
+   277  00007C  E1FD               	bnz	clear_0
+   278  00007E                     end_of_initialization:
+   279                           	opt stack 0
+   280  00007E                     __end_of__initialization:
+   281                           	opt stack 0
+   282  00007E  0100               	movlb	0
+   283  000080  EF86  F001         	goto	_main	;jump to C main() function
+   284                           postinc0	equ	0xFEE
+   285                           wreg	equ	0xFE8
+   286                           status	equ	0xFD8
+   287                           
+   288                           	psect	bssCOMRAM
+   289  000001                     __pbssCOMRAM:
+   290                           	opt stack 0
+   291  000001                     _FlashData:
+   292                           	opt stack 0
+   293  000001                     	ds	64
+   294  000041                     _address:
+   295                           	opt stack 0
+   296  000041                     	ds	4
+   297  000045                     _currentSysState:
+   298                           	opt stack 0
+   299  000045                     	ds	1
+   300  000046                     _u32CodeLen:
+   301                           	opt stack 0
+   302  000046                     	ds	4
+   303                           postinc0	equ	0xFEE
+   304                           wreg	equ	0xFE8
+   305                           status	equ	0xFD8
+   306                           
+   307                           	psect	cstackCOMRAM
+   308  00004A                     __pcstackCOMRAM:
+   309                           	opt stack 0
+   310  00004A                     putch@c:
+   311                           	opt stack 0
+   312  00004A                     u8getch@error:
+   313                           	opt stack 0
+   314  00004A                     Open2USART@spbrg:
+   315                           	opt stack 0
+   316  00004A                     vWriteFlashBlock@addr:
+   317                           	opt stack 0
+   318  00004A                     vEraseBlock@addr:
+   319                           	opt stack 0
+   320                           
+   321                           ; 4 bytes @ 0x0
+   322  00004A                     	ds	2
+   323  00004C                     u8getch@ch:
+   324                           	opt stack 0
+   325  00004C                     Open2USART@config:
+   326                           	opt stack 0
+   327                           
+   328                           ; 1 bytes @ 0x2
+   329  00004C                     	ds	1
+   330  00004D                     u8getch@i:
+   331                           	opt stack 0
+   332                           
+   333                           ; 2 bytes @ 0x3
+   334  00004D                     	ds	1
+   335  00004E                     vWriteFlashBlock@u8FlashBlockLen:
+   336                           	opt stack 0
+   337                           
+   338                           ; 1 bytes @ 0x4
+   339  00004E                     	ds	1
+   340  00004F                     ??_u8GetCodeLen:
+   341  00004F                     u8GetDataBlock@j:
+   342                           	opt stack 0
+   343  00004F                     vWriteFlashBlock@i:
+   344                           	opt stack 0
+   345                           
+   346                           ; 1 bytes @ 0x5
+   347  00004F                     	ds	1
+   348  000050                     u8GetDataBlock@ch:
+   349                           	opt stack 0
+   350  000050                     u8GetCodeLen@err:
+   351                           	opt stack 0
+   352                           
+   353                           ; 1 bytes @ 0x6
+   354  000050                     	ds	1
+   355  000051                     u8GetDataBlock@datablocklen:
+   356                           	opt stack 0
+   357  000051                     u8GetCodeLen@j:
+   358                           	opt stack 0
+   359                           
+   360                           ; 1 bytes @ 0x7
+   361  000051                     	ds	1
+   362  000052                     u8GetDataBlock@err:
+   363                           	opt stack 0
+   364                           
+   365                           ; 1 bytes @ 0x8
+   366  000052                     	ds	1
+   367  000053                     ??_main:
+   368                           
+   369                           ; 0 bytes @ 0x9
+   370  000053                     	ds	4
+   371  000057                     main@ch:
+   372                           	opt stack 0
+   373                           
+   374                           ; 1 bytes @ 0xD
+   375  000057                     	ds	1
+   376  000058                     main@counter:
+   377                           	opt stack 0
+   378                           
+   379                           ; 1 bytes @ 0xE
+   380  000058                     	ds	1
+   381  000059                     main@err:
+   382                           	opt stack 0
+   383                           
+   384                           ; 1 bytes @ 0xF
+   385  000059                     	ds	1
+   386  00005A                     main@datablocklen:
+   387                           	opt stack 0
+   388                           
+   389                           ; 1 bytes @ 0x10
+   390  00005A                     	ds	1
+   391                           postinc0	equ	0xFEE
+   392                           wreg	equ	0xFE8
+   393                           status	equ	0xFD8
+   394                           
+   395 ;; *************** function _vWriteFlashBlock *****************
+   396 ;; Defined at:
+   397 ;;		line 247 in file "main.c"
+   398 ;; Parameters:    Size  Location     Type
+   399 ;;  addr            4    0[COMRAM] unsigned long 
+   400 ;;  u8FlashBlock    1    4[COMRAM] unsigned char 
+   401 ;; Auto vars:     Size  Location     Type
+   402 ;;  i               1    5[COMRAM] unsigned char 
+   403 ;; Return value:  Size  Location     Type
+   404 ;;		None               void
+   405 ;; Registers used:
+   406 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   407 ;; Tracked objects:
+   408 ;;		On entry : 0/0
+   409 ;;		On exit  : 0/0
+   410 ;;		Unchanged: 0/0
+   411 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   412 ;;      Params:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   413 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   414 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   415 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   416 ;;Total ram usage:        6 bytes
+   417 ;; Hardware stack levels used:    1
+   418 ;; This function calls:
+   419 ;;		Nothing
+   420 ;; This function is called by:
+   421 ;;		_main
+   422 ;; This function uses a non-reentrant model
+   423 ;;
+   424                           
+   425                           	psect	text1
+   426  0001D6                     __ptext1:
+   427                           	opt stack 0
+   428  0001D6                     _vWriteFlashBlock:
+   429                           	opt stack 30
+   430                           
+   431                           ;main.c: 248: uint8_t i;
+   432                           ;main.c: 250: addr = addr -1;
+   433                           
+   434                           ;incstack = 0
+   435  0001D6  0EFF               	movlw	255
+   436  0001D8  244A               	addwf	vWriteFlashBlock@addr,w,c
+   437  0001DA  6E4A               	movwf	vWriteFlashBlock@addr,c
+   438  0001DC  0EFF               	movlw	255
+   439  0001DE  204B               	addwfc	vWriteFlashBlock@addr+1,w,c
+   440  0001E0  6E4B               	movwf	vWriteFlashBlock@addr+1,c
+   441  0001E2  0EFF               	movlw	255
+   442  0001E4  204C               	addwfc	vWriteFlashBlock@addr+2,w,c
+   443  0001E6  6E4C               	movwf	vWriteFlashBlock@addr+2,c
+   444  0001E8  0EFF               	movlw	255
+   445  0001EA  204D               	addwfc	vWriteFlashBlock@addr+3,w,c
+   446  0001EC  6E4D               	movwf	vWriteFlashBlock@addr+3,c
+   447                           
+   448                           ;main.c: 252: TBLPTRU = (uint8_t)(addr>>16);
+   449  0001EE  C04C  FFF8         	movff	vWriteFlashBlock@addr+2,tblptru	;volatile
+   450                           
+   451                           ;main.c: 253: TBLPTRH = (uint8_t)(addr>>8);
+   452  0001F2  C04B  FFF7         	movff	vWriteFlashBlock@addr+1,tblptrh	;volatile
+   453                           
+   454                           ;main.c: 254: TBLPTRL = (uint8_t)(addr);
+   455  0001F6  C04A  FFF6         	movff	vWriteFlashBlock@addr,tblptrl	;volatile
+   456                           
+   457                           ;main.c: 256: for(i=0;i<u8FlashBlockLen;i++){
+   458  0001FA  0E00               	movlw	0
+   459  0001FC  6E4F               	movwf	vWriteFlashBlock@i,c
+   460  0001FE  D00D               	goto	l1084
+   461  000200                     l1080:
+   462                           
+   463                           ;main.c: 257: TABLAT = FlashData[i];
+   464  000200  504F               	movf	vWriteFlashBlock@i,w,c
+   465  000202  0D01               	mullw	1
+   466  000204  0E01               	movlw	low _FlashData
+   467  000206  24F3               	addwf	prodl,w,c
+   468  000208  6ED9               	movwf	fsr2l,c
+   469  00020A  0E00               	movlw	high _FlashData
+   470  00020C  20F4               	addwfc	prodh,w,c
+   471  00020E  6EDA               	movwf	fsr2h,c
+   472  000210  50DF               	movf	indf2,w,c
+   473  000212  6EF5               	movwf	tablat,c	;volatile
+   474  000214  000F               	tblwt		+*	;# 
+   475  000216  2A4F               	incf	vWriteFlashBlock@i,f,c
+   476  000218  D000               	goto	l1084
+   477  00021A                     l1084:
+   478  00021A  504E               	movf	vWriteFlashBlock@u8FlashBlockLen,w,c
+   479  00021C  5C4F               	subwf	vWriteFlashBlock@i,w,c
+   480  00021E  A0D8               	btfss	status,0,c
+   481  000220  D7EF               	goto	l1080
+   482  000222  85A6               	bsf	166,2,b	;# 
+   483  000224  9FF2               	bcf	242,7,b	;# 
+   484  000226  0E55               	movlw	85	;# 
+   485  000228  6EA7               	movwf	4007,c	;# 
+   486  00022A  0EAA               	movlw	170	;# 
+   487  00022C  6EA7               	movwf	4007,c	;# 
+   488  00022E  83A6               	bsf	166,1,b	;# 
+   489  000230  8FF2               	bsf	242,7,b	;# 
+   490  000232  95A6               	bcf	166,2,b	;# 
+   491  000234  0012               	return		;funcret
+   492  000236                     __end_of_vWriteFlashBlock:
+   493                           	opt stack 0
+   494                           tblptru	equ	0xFF8
+   495                           tblptrh	equ	0xFF7
+   496                           tblptrl	equ	0xFF6
+   497                           tablat	equ	0xFF5
+   498                           prodh	equ	0xFF4
+   499                           prodl	equ	0xFF3
+   500                           postinc0	equ	0xFEE
+   501                           wreg	equ	0xFE8
+   502                           indf2	equ	0xFDF
+   503                           fsr2h	equ	0xFDA
+   504                           fsr2l	equ	0xFD9
+   505                           status	equ	0xFD8
+   506                           
+   507 ;; *************** function _vEraseFlash *****************
+   508 ;; Defined at:
+   509 ;;		line 297 in file "main.c"
+   510 ;; Parameters:    Size  Location     Type
+   511 ;;		None
+   512 ;; Auto vars:     Size  Location     Type
+   513 ;;		None
+   514 ;; Return value:  Size  Location     Type
+   515 ;;		None               void
+   516 ;; Registers used:
+   517 ;;		wreg, status,2, status,0, cstack
+   518 ;; Tracked objects:
+   519 ;;		On entry : 0/0
+   520 ;;		On exit  : 0/0
+   521 ;;		Unchanged: 0/0
+   522 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   523 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   524 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   525 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   526 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   527 ;;Total ram usage:        0 bytes
+   528 ;; Hardware stack levels used:    1
+   529 ;; Hardware stack levels required when called:    1
+   530 ;; This function calls:
+   531 ;;		_vEraseBlock
+   532 ;; This function is called by:
+   533 ;;		_main
+   534 ;; This function uses a non-reentrant model
+   535 ;;
+   536                           
+   537                           	psect	text2
+   538  000184                     __ptext2:
+   539                           	opt stack 0
+   540  000184                     _vEraseFlash:
+   541                           	opt stack 29
+   542                           
+   543                           ;main.c: 298: for(address=0x400u;address<(0x1FFF8u-1024);address+=1024){
+   544                           
+   545                           ;incstack = 0
+   546  000184  0E00               	movlw	0
+   547  000186  6E41               	movwf	_address,c	;volatile
+   548  000188  0E04               	movlw	4
+   549  00018A  6E42               	movwf	_address+1,c	;volatile
+   550  00018C  0E00               	movlw	0
+   551  00018E  6E43               	movwf	_address+2,c	;volatile
+   552  000190  0E00               	movlw	0
+   553  000192  6E44               	movwf	_address+3,c	;volatile
+   554  000194                     l1032:
+   555  000194  5044               	movf	_address+3,w,c	;volatile
+   556  000196  E11E               	bnz	l118
+   557  000198  0EF8               	movlw	248
+   558  00019A  5C41               	subwf	_address,w,c	;volatile
+   559  00019C  0EFB               	movlw	251
+   560  00019E  5842               	subwfb	_address+1,w,c	;volatile
+   561  0001A0  0E01               	movlw	1
+   562  0001A2  5843               	subwfb	_address+2,w,c	;volatile
+   563  0001A4  B0D8               	btfsc	status,0,c
+   564  0001A6  0012               	return	
+   565  0001A8  D001               	goto	l1036
+   566  0001AA  0012               	return	
+   567  0001AC                     l1036:
+   568                           
+   569                           ;main.c: 299: vEraseBlock(address);
+   570  0001AC  C041  F04A         	movff	_address,vEraseBlock@addr	;volatile
+   571  0001B0  C042  F04B         	movff	_address+1,vEraseBlock@addr+1	;volatile
+   572  0001B4  C043  F04C         	movff	_address+2,vEraseBlock@addr+2	;volatile
+   573  0001B8  C044  F04D         	movff	_address+3,vEraseBlock@addr+3	;volatile
+   574  0001BC  EC42  F000         	call	_vEraseBlock	;wreg free
+   575  0001C0  0E00               	movlw	0
+   576  0001C2  2641               	addwf	_address,f,c	;volatile
+   577  0001C4  0E04               	movlw	4
+   578  0001C6  2242               	addwfc	_address+1,f,c	;volatile
+   579  0001C8  0E00               	movlw	0
+   580  0001CA  2243               	addwfc	_address+2,f,c	;volatile
+   581  0001CC  0E00               	movlw	0
+   582  0001CE  2244               	addwfc	_address+3,f,c	;volatile
+   583  0001D0  D7E1               	goto	l1032
+   584  0001D2  0012               	return	
+   585  0001D4                     l118:
+   586  0001D4  0012               	return		;funcret
+   587  0001D6                     __end_of_vEraseFlash:
+   588                           	opt stack 0
+   589                           tblptru	equ	0xFF8
+   590                           tblptrh	equ	0xFF7
+   591                           tblptrl	equ	0xFF6
+   592                           tablat	equ	0xFF5
+   593                           prodh	equ	0xFF4
+   594                           prodl	equ	0xFF3
+   595                           postinc0	equ	0xFEE
+   596                           wreg	equ	0xFE8
+   597                           indf2	equ	0xFDF
+   598                           fsr2h	equ	0xFDA
+   599                           fsr2l	equ	0xFD9
+   600                           status	equ	0xFD8
+   601                           
+   602 ;; *************** function _vEraseBlock *****************
+   603 ;; Defined at:
+   604 ;;		line 303 in file "main.c"
+   605 ;; Parameters:    Size  Location     Type
+   606 ;;  addr            4    0[COMRAM] unsigned long 
+   607 ;; Auto vars:     Size  Location     Type
+   608 ;;		None
+   609 ;; Return value:  Size  Location     Type
+   610 ;;		None               void
+   611 ;; Registers used:
+   612 ;;		None
+   613 ;; Tracked objects:
+   614 ;;		On entry : 0/0
+   615 ;;		On exit  : 0/0
+   616 ;;		Unchanged: 0/0
+   617 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   618 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   619 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   620 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   621 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   622 ;;Total ram usage:        4 bytes
+   623 ;; Hardware stack levels used:    1
+   624 ;; This function calls:
+   625 ;;		Nothing
+   626 ;; This function is called by:
+   627 ;;		_vEraseFlash
+   628 ;; This function uses a non-reentrant model
+   629 ;;
+   630                           
+   631                           	psect	text3
+   632  000084                     __ptext3:
+   633                           	opt stack 0
+   634  000084                     _vEraseBlock:
+   635                           	opt stack 29
+   636                           
+   637                           ;main.c: 305: TBLPTRU = (uint8_t)(addr>>16);
+   638                           
+   639                           ;incstack = 0
+   640  000084  C04C  FFF8         	movff	vEraseBlock@addr+2,tblptru	;volatile
+   641                           
+   642                           ;main.c: 306: TBLPTRH = (uint8_t)(addr>>8);
+   643  000088  C04B  FFF7         	movff	vEraseBlock@addr+1,tblptrh	;volatile
+   644                           
+   645                           ;main.c: 307: TBLPTRL = (uint8_t)(addr);
+   646  00008C  C04A  FFF6         	movff	vEraseBlock@addr,tblptrl	;volatile
+   647  000090  85A6               	bsf	166,2,b	;# 
+   648  000092  89A6               	bsf	166,4,b	;# 
+   649  000094  9FF2               	bcf	242,7,b	;# 
+   650  000096  0E55               	movlw	85	;# 
+   651  000098  6EA7               	movwf	4007,c	;# 
+   652  00009A  0EAA               	movlw	170	;# 
+   653  00009C  6EA7               	movwf	4007,c	;# 
+   654  00009E  83A6               	bsf	166,1,b	;# 
+   655  0000A0  8FF2               	bsf	242,7,b	;# 
+   656  0000A2  0012               	return		;funcret
+   657  0000A4                     __end_of_vEraseBlock:
+   658                           	opt stack 0
+   659                           tblptru	equ	0xFF8
+   660                           tblptrh	equ	0xFF7
+   661                           tblptrl	equ	0xFF6
+   662                           tablat	equ	0xFF5
+   663                           prodh	equ	0xFF4
+   664                           prodl	equ	0xFF3
+   665                           postinc0	equ	0xFEE
+   666                           wreg	equ	0xFE8
+   667                           indf2	equ	0xFDF
+   668                           fsr2h	equ	0xFDA
+   669                           fsr2l	equ	0xFD9
+   670                           status	equ	0xFD8
+   671                           
+   672 ;; *************** function _u8GetDataBlock *****************
+   673 ;; Defined at:
+   674 ;;		line 142 in file "main.c"
+   675 ;; Parameters:    Size  Location     Type
+   676 ;;		None
+   677 ;; Auto vars:     Size  Location     Type
+   678 ;;  err             1    8[COMRAM] unsigned char 
+   679 ;;  datablocklen    1    7[COMRAM] unsigned char 
+   680 ;;  ch              1    6[COMRAM] unsigned char 
+   681 ;;  j               1    5[COMRAM] unsigned char 
+   682 ;; Return value:  Size  Location     Type
+   683 ;;                  1    wreg      unsigned char 
+   684 ;; Registers used:
+   685 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   686 ;; Tracked objects:
+   687 ;;		On entry : 0/0
+   688 ;;		On exit  : 0/0
+   689 ;;		Unchanged: 0/0
+   690 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   691 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   692 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   693 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   694 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   695 ;;Total ram usage:        4 bytes
+   696 ;; Hardware stack levels used:    1
+   697 ;; Hardware stack levels required when called:    1
+   698 ;; This function calls:
+   699 ;;		_putch
+   700 ;;		_u8getch
+   701 ;; This function is called by:
+   702 ;;		_main
+   703 ;; This function uses a non-reentrant model
+   704 ;;
+   705                           
+   706                           	psect	text4
+   707  00029E                     __ptext4:
+   708                           	opt stack 0
+   709  00029E                     _u8GetDataBlock:
+   710                           	opt stack 29
+   711                           
+   712                           ;main.c: 143: uint8_t j;
+   713                           ;main.c: 144: uint8_t err;
+   714                           ;main.c: 145: uint8_t ch;
+   715                           ;main.c: 146: uint8_t datablocklen = 0;
+   716                           
+   717                           ;incstack = 0
+   718  00029E  0E00               	movlw	0
+   719  0002A0  6E51               	movwf	u8GetDataBlock@datablocklen,c
+   720                           
+   721                           ;main.c: 154: ch = u8getch(&err);
+   722  0002A2  0E52               	movlw	low u8GetDataBlock@err
+   723  0002A4  6E4A               	movwf	u8getch@error,c
+   724  0002A6  0E00               	movlw	high u8GetDataBlock@err
+   725  0002A8  6E4B               	movwf	u8getch@error+1,c
+   726  0002AA  EC9A  F000         	call	_u8getch	;wreg free
+   727  0002AE  6E50               	movwf	u8GetDataBlock@ch,c
+   728                           
+   729                           ;main.c: 155: if(err == 0){
+   730  0002B0  5052               	movf	u8GetDataBlock@err,w,c
+   731  0002B2  A4D8               	btfss	status,2,c
+   732  0002B4  D028               	goto	l1066
+   733                           
+   734                           ;main.c: 156: datablocklen = ch;
+   735  0002B6  C050  F051         	movff	u8GetDataBlock@ch,u8GetDataBlock@datablocklen
+   736                           
+   737                           ;main.c: 158: for(j=0;j<datablocklen;j++){
+   738  0002BA  0E00               	movlw	0
+   739  0002BC  6E4F               	movwf	u8GetDataBlock@j,c
+   740  0002BE  D01D               	goto	l1064
+   741  0002C0                     l82:
+   742                           
+   743                           ;main.c: 159: LATAbits.LATA0 = 1;
+   744  0002C0  8089               	bsf	3977,0,c	;volatile
+   745                           
+   746                           ;main.c: 160: ch = u8getch(&err);
+   747  0002C2  0E52               	movlw	low u8GetDataBlock@err
+   748  0002C4  6E4A               	movwf	u8getch@error,c
+   749  0002C6  0E00               	movlw	high u8GetDataBlock@err
+   750  0002C8  6E4B               	movwf	u8getch@error+1,c
+   751  0002CA  EC9A  F000         	call	_u8getch	;wreg free
+   752  0002CE  6E50               	movwf	u8GetDataBlock@ch,c
+   753                           
+   754                           ;main.c: 161: LATAbits.LATA0 = 0;
+   755  0002D0  9089               	bcf	3977,0,c	;volatile
+   756                           
+   757                           ;main.c: 163: if(err == 0){
+   758  0002D2  5052               	movf	u8GetDataBlock@err,w,c
+   759  0002D4  A4D8               	btfss	status,2,c
+   760  0002D6  D00B               	goto	l1060
+   761                           
+   762                           ;main.c: 164: FlashData[j] = ch;
+   763  0002D8  504F               	movf	u8GetDataBlock@j,w,c
+   764  0002DA  0D01               	mullw	1
+   765  0002DC  0E01               	movlw	low _FlashData
+   766  0002DE  24F3               	addwf	prodl,w,c
+   767  0002E0  6ED9               	movwf	fsr2l,c
+   768  0002E2  0E00               	movlw	high _FlashData
+   769  0002E4  20F4               	addwfc	prodh,w,c
+   770  0002E6  6EDA               	movwf	fsr2h,c
+   771  0002E8  C050  FFDF         	movff	u8GetDataBlock@ch,indf2
+   772                           
+   773                           ;main.c: 165: } else{
+   774  0002EC  D004               	goto	l1062
+   775  0002EE                     l1060:
+   776                           
+   777                           ;main.c: 166: putch('N');
+   778  0002EE  0E4E               	movlw	78
+   779  0002F0  EC31  F000         	call	_putch
+   780                           
+   781                           ;main.c: 167: break;
+   782  0002F4  D008               	goto	l1066
+   783  0002F6                     l1062:
+   784  0002F6  2A4F               	incf	u8GetDataBlock@j,f,c
+   785  0002F8  D000               	goto	l1064
+   786  0002FA                     l1064:
+   787  0002FA  5051               	movf	u8GetDataBlock@datablocklen,w,c
+   788  0002FC  5C4F               	subwf	u8GetDataBlock@j,w,c
+   789  0002FE  B0D8               	btfsc	status,0,c
+   790  000300  D002               	goto	l1066
+   791  000302  D7DE               	goto	l82
+   792  000304  D000               	goto	l1066
+   793  000306                     l1066:
+   794                           
+   795                           ;main.c: 168: }
+   796                           ;main.c: 170: }
+   797                           ;main.c: 172: }
+   798                           ;main.c: 175: return datablocklen;
+   799  000306  5051               	movf	u8GetDataBlock@datablocklen,w,c
+   800  000308  0012               	return	
+   801  00030A  0012               	return		;funcret
+   802  00030C                     __end_of_u8GetDataBlock:
+   803                           	opt stack 0
+   804                           tblptru	equ	0xFF8
+   805                           tblptrh	equ	0xFF7
+   806                           tblptrl	equ	0xFF6
+   807                           tablat	equ	0xFF5
+   808                           prodh	equ	0xFF4
+   809                           prodl	equ	0xFF3
+   810                           postinc0	equ	0xFEE
+   811                           wreg	equ	0xFE8
+   812                           indf2	equ	0xFDF
+   813                           fsr2h	equ	0xFDA
+   814                           fsr2l	equ	0xFD9
+   815                           status	equ	0xFD8
+   816                           
+   817 ;; *************** function _u8GetCodeLen *****************
+   818 ;; Defined at:
+   819 ;;		line 202 in file "main.c"
+   820 ;; Parameters:    Size  Location     Type
+   821 ;;		None
+   822 ;; Auto vars:     Size  Location     Type
+   823 ;;  j               1    7[COMRAM] unsigned char 
+   824 ;;  err             1    6[COMRAM] unsigned char 
+   825 ;; Return value:  Size  Location     Type
+   826 ;;                  1    wreg      unsigned char 
+   827 ;; Registers used:
+   828 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   829 ;; Tracked objects:
+   830 ;;		On entry : 0/0
+   831 ;;		On exit  : 0/0
+   832 ;;		Unchanged: 0/0
+   833 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   834 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   835 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   836 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   837 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   838 ;;Total ram usage:        3 bytes
+   839 ;; Hardware stack levels used:    1
+   840 ;; Hardware stack levels required when called:    1
+   841 ;; This function calls:
+   842 ;;		_putch
+   843 ;;		_u8getch
+   844 ;; This function is called by:
+   845 ;;		_main
+   846 ;; This function uses a non-reentrant model
+   847 ;;
+   848                           
+   849                           	psect	text5
+   850  0000EA                     __ptext5:
+   851                           	opt stack 0
+   852  0000EA                     _u8GetCodeLen:
+   853                           	opt stack 29
+   854                           
+   855                           ;main.c: 203: uint8_t j;
+   856                           ;main.c: 204: uint8_t err;
+   857                           ;main.c: 205: for(j=0;j<4;j++){
+   858                           
+   859                           ;incstack = 0
+   860  0000EA  0E00               	movlw	0
+   861  0000EC  6E51               	movwf	u8GetCodeLen@j,c
+   862  0000EE  0E03               	movlw	3
+   863  0000F0  6451               	cpfsgt	u8GetCodeLen@j,c
+   864  0000F2  D002               	goto	l1018
+   865  0000F4  0012               	return	
+   866  0000F6  0012               	return	
+   867  0000F8                     l1018:
+   868                           
+   869                           ;main.c: 206: u32CodeLen.CodeLena[j] = u8getch(&err);
+   870  0000F8  0E50               	movlw	low u8GetCodeLen@err
+   871  0000FA  6E4A               	movwf	u8getch@error,c
+   872  0000FC  0E00               	movlw	high u8GetCodeLen@err
+   873  0000FE  6E4B               	movwf	u8getch@error+1,c
+   874  000100  EC9A  F000         	call	_u8getch	;wreg free
+   875  000104  6E4F               	movwf	??_u8GetCodeLen& (0+255),c
+   876  000106  5051               	movf	u8GetCodeLen@j,w,c
+   877  000108  0D01               	mullw	1
+   878  00010A  0E46               	movlw	low _u32CodeLen
+   879  00010C  24F3               	addwf	prodl,w,c
+   880  00010E  6ED9               	movwf	fsr2l,c
+   881  000110  0E00               	movlw	high _u32CodeLen
+   882  000112  20F4               	addwfc	prodh,w,c
+   883  000114  6EDA               	movwf	fsr2h,c
+   884  000116  C04F  FFDF         	movff	??_u8GetCodeLen,indf2
+   885                           
+   886                           ;main.c: 207: if(err != 0){
+   887  00011A  5050               	movf	u8GetCodeLen@err,w,c
+   888  00011C  B4D8               	btfsc	status,2,c
+   889  00011E  D004               	goto	l1026
+   890                           
+   891                           ;main.c: 208: putch('N');
+   892  000120  0E4E               	movlw	78
+   893  000122  EC31  F000         	call	_putch
+   894                           
+   895                           ;main.c: 209: return 1;
+   896                           ;	Return value of _u8GetCodeLen is never used
+   897  000126  0012               	return	
+   898  000128                     l1026:
+   899  000128  2A51               	incf	u8GetCodeLen@j,f,c
+   900  00012A  0E03               	movlw	3
+   901  00012C  6451               	cpfsgt	u8GetCodeLen@j,c
+   902  00012E  D7E4               	goto	l1018
+   903  000130  0012               	return	
+   904                           
+   905                           ;main.c: 210: }
+   906                           ;main.c: 211: }
+   907                           ;main.c: 213: return 0;
+   908                           ;	Return value of _u8GetCodeLen is never used
+   909  000132  0012               	return		;funcret
+   910  000134                     __end_of_u8GetCodeLen:
+   911                           	opt stack 0
+   912                           tblptru	equ	0xFF8
+   913                           tblptrh	equ	0xFF7
+   914                           tblptrl	equ	0xFF6
+   915                           tablat	equ	0xFF5
+   916                           prodh	equ	0xFF4
+   917                           prodl	equ	0xFF3
+   918                           postinc0	equ	0xFEE
+   919                           wreg	equ	0xFE8
+   920                           indf2	equ	0xFDF
+   921                           fsr2h	equ	0xFDA
+   922                           fsr2l	equ	0xFD9
+   923                           status	equ	0xFD8
+   924                           
+   925 ;; *************** function _u8getch *****************
+   926 ;; Defined at:
+   927 ;;		line 281 in file "main.c"
+   928 ;; Parameters:    Size  Location     Type
+   929 ;;  error           2    0[COMRAM] PTR unsigned char 
+   930 ;;		 -> u8GetCodeLen@err(1), u8GetDataBlock@err(1), main@err(1), 
+   931 ;; Auto vars:     Size  Location     Type
+   932 ;;  i               2    3[COMRAM] unsigned int 
+   933 ;;  ch              1    2[COMRAM] unsigned char 
+   934 ;; Return value:  Size  Location     Type
+   935 ;;                  1    wreg      unsigned char 
+   936 ;; Registers used:
+   937 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   938 ;; Tracked objects:
+   939 ;;		On entry : 0/0
+   940 ;;		On exit  : 0/0
+   941 ;;		Unchanged: 0/0
+   942 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+   943 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   944 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   945 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   946 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+   947 ;;Total ram usage:        5 bytes
+   948 ;; Hardware stack levels used:    1
+   949 ;; This function calls:
+   950 ;;		Nothing
+   951 ;; This function is called by:
+   952 ;;		_main
+   953 ;;		_u8GetDataBlock
+   954 ;;		_u8GetCodeLen
+   955 ;; This function uses a non-reentrant model
+   956 ;;
+   957                           
+   958                           	psect	text6
+   959  000134                     __ptext6:
+   960                           	opt stack 0
+   961  000134                     _u8getch:
+   962                           	opt stack 30
+   963                           
+   964                           ;main.c: 282: uint16_t i;
+   965                           ;main.c: 283: uint8_t ch;
+   966                           ;main.c: 284: for(i=0;i<10000;i++){
+   967                           
+   968                           ;incstack = 0
+   969  000134  0E00               	movlw	0
+   970  000136  6E4E               	movwf	u8getch@i+1,c
+   971  000138  0E00               	movlw	0
+   972  00013A  6E4D               	movwf	u8getch@i,c
+   973  00013C                     l938:
+   974  00013C  0E10               	movlw	16
+   975  00013E  5C4D               	subwf	u8getch@i,w,c
+   976  000140  0E27               	movlw	39
+   977  000142  584E               	subwfb	u8getch@i+1,w,c
+   978  000144  B0D8               	btfsc	status,0,c
+   979  000146  D015               	goto	l954
+   980  000148  D001               	goto	l110
+   981  00014A  D013               	goto	l954
+   982  00014C                     l110:
+   983                           
+   984                           ;main.c: 285: if(PIR3bits.RC2IF == 1){
+   985  00014C  AAA4               	btfss	4004,5,c	;volatile
+   986  00014E  D00A               	goto	l950
+   987                           
+   988                           ;main.c: 286: *error = 0;
+   989  000150  C04A  FFD9         	movff	u8getch@error,fsr2l
+   990  000154  C04B  FFDA         	movff	u8getch@error+1,fsr2h
+   991  000158  0E00               	movlw	0
+   992  00015A  6EDF               	movwf	indf2,c
+   993                           
+   994                           ;main.c: 287: ch = RCREG2;
+   995  00015C  CFAA F04C          	movff	4010,u8getch@ch	;volatile
+   996                           
+   997                           ;main.c: 288: return ch;
+   998  000160  504C               	movf	u8getch@ch,w,c
+   999  000162  0012               	return	
+  1000  000164                     l950:
+  1001                           
+  1002                           ;main.c: 289: }
+  1003                           ;main.c: 291: _delay((unsigned long)((200)*(8000000/4000000.0)));
+  1004  000164  0E85               	movlw	133
+  1005  000166                     u547:
+  1006  000166  2EE8               	decfsz	wreg,f,c
+  1007  000168  D7FE               	goto	u547
+  1008  00016A  F000               	nop	
+  1009  00016C  4A4D               	infsnz	u8getch@i,f,c
+  1010  00016E  2A4E               	incf	u8getch@i+1,f,c
+  1011  000170  D7E5               	goto	l938
+  1012  000172                     l954:
+  1013                           
+  1014                           ;main.c: 292: }
+  1015                           ;main.c: 293: *error = 1;
+  1016  000172  C04A  FFD9         	movff	u8getch@error,fsr2l
+  1017  000176  C04B  FFDA         	movff	u8getch@error+1,fsr2h
+  1018  00017A  0E01               	movlw	1
+  1019  00017C  6EDF               	movwf	indf2,c
+  1020                           
+  1021                           ;main.c: 294: return 0;
+  1022  00017E  0E00               	movlw	0
+  1023  000180  0012               	return	
+  1024  000182  0012               	return		;funcret
+  1025  000184                     __end_of_u8getch:
+  1026                           	opt stack 0
+  1027                           tblptru	equ	0xFF8
+  1028                           tblptrh	equ	0xFF7
+  1029                           tblptrl	equ	0xFF6
+  1030                           tablat	equ	0xFF5
+  1031                           prodh	equ	0xFF4
+  1032                           prodl	equ	0xFF3
+  1033                           postinc0	equ	0xFEE
+  1034                           wreg	equ	0xFE8
+  1035                           indf2	equ	0xFDF
+  1036                           fsr2h	equ	0xFDA
+  1037                           fsr2l	equ	0xFD9
+  1038                           status	equ	0xFD8
+  1039                           
+  1040 ;; *************** function _putch *****************
+  1041 ;; Defined at:
+  1042 ;;		line 274 in file "main.c"
+  1043 ;; Parameters:    Size  Location     Type
+  1044 ;;  c               1    wreg     unsigned char 
+  1045 ;; Auto vars:     Size  Location     Type
+  1046 ;;  c               1    0[COMRAM] unsigned char 
+  1047 ;; Return value:  Size  Location     Type
+  1048 ;;		None               void
+  1049 ;; Registers used:
+  1050 ;;		wreg
+  1051 ;; Tracked objects:
+  1052 ;;		On entry : 0/0
+  1053 ;;		On exit  : 0/0
+  1054 ;;		Unchanged: 0/0
+  1055 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1056 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1057 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1058 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1059 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1060 ;;Total ram usage:        1 bytes
+  1061 ;; Hardware stack levels used:    1
+  1062 ;; This function calls:
+  1063 ;;		Nothing
+  1064 ;; This function is called by:
+  1065 ;;		_main
+  1066 ;;		_u8GetDataBlock
+  1067 ;;		_u8GetCodeLen
+  1068 ;; This function uses a non-reentrant model
+  1069 ;;
+  1070                           
+  1071                           	psect	text7
+  1072  000062                     __ptext7:
+  1073                           	opt stack 0
+  1074  000062                     _putch:
+  1075                           	opt stack 29
+  1076                           
+  1077                           ;incstack = 0
+  1078                           ;putch@c stored from wreg
+  1079  000062  6E4A               	movwf	putch@c,c
+  1080                           
+  1081                           ;main.c: 275: TX2IF = 0;
+  1082  000064  98A4               	bcf	4004,4,c	;volatile
+  1083                           
+  1084                           ;main.c: 276: TXREG2 = c;
+  1085  000066  C04A  FFA9         	movff	putch@c,4009	;volatile
+  1086                           
+  1087                           ;main.c: 277: while(!TX2IF);
+  1088  00006A  D000               	goto	l104
+  1089  00006C                     l104:
+  1090  00006C  A8A4               	btfss	4004,4,c	;volatile
+  1091  00006E  D7FE               	goto	l104
+  1092  000070  0012               	return		;funcret
+  1093  000072                     __end_of_putch:
+  1094                           	opt stack 0
+  1095                           tblptru	equ	0xFF8
+  1096                           tblptrh	equ	0xFF7
+  1097                           tblptrl	equ	0xFF6
+  1098                           tablat	equ	0xFF5
+  1099                           prodh	equ	0xFF4
+  1100                           prodl	equ	0xFF3
+  1101                           postinc0	equ	0xFEE
+  1102                           wreg	equ	0xFE8
+  1103                           indf2	equ	0xFDF
+  1104                           fsr2h	equ	0xFDA
+  1105                           fsr2l	equ	0xFD9
+  1106                           status	equ	0xFD8
+  1107                           
+  1108 ;; *************** function _init *****************
+  1109 ;; Defined at:
+  1110 ;;		line 217 in file "main.c"
+  1111 ;; Parameters:    Size  Location     Type
+  1112 ;;		None
+  1113 ;; Auto vars:     Size  Location     Type
+  1114 ;;		None
+  1115 ;; Return value:  Size  Location     Type
+  1116 ;;		None               void
+  1117 ;; Registers used:
+  1118 ;;		wreg, status,2, cstack
+  1119 ;; Tracked objects:
+  1120 ;;		On entry : 0/0
+  1121 ;;		On exit  : 0/0
+  1122 ;;		Unchanged: 0/0
+  1123 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1124 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1125 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1126 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1127 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1128 ;;Total ram usage:        0 bytes
+  1129 ;; Hardware stack levels used:    1
+  1130 ;; Hardware stack levels required when called:    1
+  1131 ;; This function calls:
+  1132 ;;		_Open2USART
+  1133 ;; This function is called by:
+  1134 ;;		_main
+  1135 ;; This function uses a non-reentrant model
+  1136 ;;
+  1137                           
+  1138                           	psect	text8
+  1139  0000A4                     __ptext8:
+  1140                           	opt stack 0
+  1141  0000A4                     _init:
+  1142                           	opt stack 29
+  1143                           
+  1144                           ;main.c: 218: OSCCONbits.IRCF = 0b111;
+  1145                           
+  1146                           ;incstack = 0
+  1147  0000A4  88D3               	bsf	4051,4,c	;volatile
+  1148  0000A6  8AD3               	bsf	4051,5,c	;volatile
+  1149  0000A8  8CD3               	bsf	4051,6,c	;volatile
+  1150                           
+  1151                           ;main.c: 221: EECON2=0x55;
+  1152  0000AA  0E55               	movlw	85
+  1153  0000AC  6EA7               	movwf	4007,c	;volatile
+  1154                           
+  1155                           ;main.c: 222: EECON2=0xAA;
+  1156  0000AE  0EAA               	movlw	170
+  1157  0000B0  6EA7               	movwf	4007,c	;volatile
+  1158                           
+  1159                           ;main.c: 223: PPSCONbits.IOLOCK=0;
+  1160  0000B2  010E               	movlb	14	; () banked
+  1161  0000B4  91BF               	bcf	191,0,b	;volatile
+  1162                           
+  1163                           ;main.c: 227: RPINR16 = 4;
+  1164  0000B6  0E04               	movlw	4
+  1165  0000B8  010E               	movlb	14	; () banked
+  1166  0000BA  6FF7               	movwf	247,b	;volatile
+  1167                           
+  1168                           ;main.c: 228: RPOR3 = 6;
+  1169  0000BC  0E06               	movlw	6
+  1170  0000BE  010E               	movlb	14	; () banked
+  1171  0000C0  6FC3               	movwf	195,b	;volatile
+  1172                           
+  1173                           ; BSR set to: 14
+  1174                           ;main.c: 230: PPSCONbits.IOLOCK=1;
+  1175  0000C2  010E               	movlb	14	; () banked
+  1176  0000C4  81BF               	bsf	191,0,b	;volatile
+  1177                           
+  1178                           ;main.c: 233: ANCON0 = 0b00000001;
+  1179  0000C6  0E01               	movlw	1
+  1180  0000C8  010F               	movlb	15	; () banked
+  1181  0000CA  6F48               	movwf	72,b	;volatile
+  1182                           
+  1183                           ;main.c: 236: ANCON1=0b00011111;
+  1184  0000CC  0E1F               	movlw	31
+  1185  0000CE  010F               	movlb	15	; () banked
+  1186  0000D0  6F49               	movwf	73,b	;volatile
+  1187                           
+  1188                           ;main.c: 239: TRISA = 0b11111110;
+  1189  0000D2  0EFE               	movlw	254
+  1190  0000D4  6E92               	movwf	3986,c	;volatile
+  1191                           
+  1192                           ;main.c: 241: TRISB=0b11110010;
+  1193  0000D6  0EF2               	movlw	242
+  1194  0000D8  6E93               	movwf	3987,c	;volatile
+  1195                           
+  1196                           ; BSR set to: 15
+  1197                           ;main.c: 244: Open2USART( 0b01111111 & 0b10111111 & 0b11011111 & 0b11111110 & 0b11111101
+      +                           & 0b11111111 & 0b11111111,25);
+  1198  0000DA  0E00               	movlw	0
+  1199  0000DC  6E4B               	movwf	Open2USART@spbrg+1,c
+  1200  0000DE  0E19               	movlw	25
+  1201  0000E0  6E4A               	movwf	Open2USART@spbrg,c
+  1202  0000E2  0E1C               	movlw	28
+  1203  0000E4  EC1B  F001         	call	_Open2USART
+  1204  0000E8  0012               	return		;funcret
+  1205  0000EA                     __end_of_init:
+  1206                           	opt stack 0
+  1207                           tblptru	equ	0xFF8
+  1208                           tblptrh	equ	0xFF7
+  1209                           tblptrl	equ	0xFF6
+  1210                           tablat	equ	0xFF5
+  1211                           prodh	equ	0xFF4
+  1212                           prodl	equ	0xFF3
+  1213                           postinc0	equ	0xFEE
+  1214                           wreg	equ	0xFE8
+  1215                           indf2	equ	0xFDF
+  1216                           fsr2h	equ	0xFDA
+  1217                           fsr2l	equ	0xFD9
+  1218                           status	equ	0xFD8
+  1219                           
+  1220 ;; *************** function _Open2USART *****************
+  1221 ;; Defined at:
+  1222 ;;		line 118 in file "C:\Program Files (x86)\Microchip\xc8\v1.34\sources\pic18\plib\USART\u2open.c"
+  1223 ;; Parameters:    Size  Location     Type
+  1224 ;;  config          1    wreg     unsigned char 
+  1225 ;;  spbrg           2    0[COMRAM] unsigned int 
+  1226 ;; Auto vars:     Size  Location     Type
+  1227 ;;  config          1    2[COMRAM] unsigned char 
+  1228 ;; Return value:  Size  Location     Type
+  1229 ;;		None               void
+  1230 ;; Registers used:
+  1231 ;;		wreg, status,2
+  1232 ;; Tracked objects:
+  1233 ;;		On entry : 0/0
+  1234 ;;		On exit  : 0/0
+  1235 ;;		Unchanged: 0/0
+  1236 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14
+  1237 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1238 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1239 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1240 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0
+  1241 ;;Total ram usage:        3 bytes
+  1242 ;; Hardware stack levels used:    1
+  1243 ;; This function calls:
+  1244 ;;		Nothing
+  1245 ;; This function is called by:
+  1246 ;;		_init
+  1247 ;; This function uses a non-reentrant model
+  1248 ;;
+  1249                           
+  1250                           	psect	text9
+  1251  000236                     __ptext9:
+  1252                           	opt stack 0
+  1253  000236                     _Open2USART:
+  1254                           	opt stack 29
+  1255                           
+  1256                           ;incstack = 0
+  1257                           ;Open2USART@config stored from wreg
+  1258  000236  6E4C               	movwf	Open2USART@config,c
+  1259  000238  0E00               	movlw	0
+  1260  00023A  6EA8               	movwf	4008,c	;volatile
+  1261  00023C  0E00               	movlw	0
+  1262  00023E  6E9C               	movwf	3996,c	;volatile
+  1263  000240  A04C               	btfss	Open2USART@config,0,c
+  1264  000242  D002               	goto	l966
+  1265  000244  88A8               	bsf	4008,4,c	;volatile
+  1266  000246  D000               	goto	l966
+  1267  000248                     l966:
+  1268  000248  A24C               	btfss	Open2USART@config,1,c
+  1269  00024A  D003               	goto	l970
+  1270  00024C  8CA8               	bsf	4008,6,c	;volatile
+  1271  00024E  8C9C               	bsf	3996,6,c	;volatile
+  1272  000250  D000               	goto	l970
+  1273  000252                     l970:
+  1274  000252  A44C               	btfss	Open2USART@config,2,c
+  1275  000254  D002               	goto	l974
+  1276  000256  8EA8               	bsf	4008,7,c	;volatile
+  1277  000258  D000               	goto	l974
+  1278  00025A                     l974:
+  1279  00025A  A64C               	btfss	Open2USART@config,3,c
+  1280  00025C  D002               	goto	l141
+  1281  00025E  889C               	bsf	3996,4,c	;volatile
+  1282  000260  D002               	goto	l978
+  1283  000262                     l141:
+  1284  000262  8A9C               	bsf	3996,5,c	;volatile
+  1285  000264  D000               	goto	l978
+  1286  000266                     l978:
+  1287  000266  A84C               	btfss	Open2USART@config,4,c
+  1288  000268  D002               	goto	l143
+  1289  00026A  84A8               	bsf	4008,2,c	;volatile
+  1290  00026C  D002               	goto	l982
+  1291  00026E                     l143:
+  1292  00026E  94A8               	bcf	4008,2,c	;volatile
+  1293  000270  D000               	goto	l982
+  1294  000272                     l982:
+  1295  000272  AA4C               	btfss	Open2USART@config,5,c
+  1296  000274  D002               	goto	l986
+  1297  000276  869C               	bsf	3996,3,c	;volatile
+  1298  000278  D000               	goto	l986
+  1299  00027A                     l986:
+  1300  00027A  AC4C               	btfss	Open2USART@config,6,c
+  1301  00027C  D002               	goto	l146
+  1302  00027E  8AA3               	bsf	4003,5,c	;volatile
+  1303  000280  D002               	goto	l990
+  1304  000282                     l146:
+  1305  000282  9AA3               	bcf	4003,5,c	;volatile
+  1306  000284  D000               	goto	l990
+  1307  000286                     l990:
+  1308  000286  AE4C               	btfss	Open2USART@config,7,c
+  1309  000288  D002               	goto	l148
+  1310  00028A  88A3               	bsf	4003,4,c	;volatile
+  1311  00028C  D001               	goto	l149
+  1312  00028E                     l148:
+  1313  00028E  98A3               	bcf	4003,4,c	;volatile
+  1314  000290                     l149:
+  1315  000290  C04A  FFAB         	movff	Open2USART@spbrg,4011	;volatile
+  1316  000294  504B               	movf	Open2USART@spbrg+1,w,c
+  1317  000296  6E7D               	movwf	3965,c	;volatile
+  1318  000298  8AA8               	bsf	4008,5,c	;volatile
+  1319  00029A  8E9C               	bsf	3996,7,c	;volatile
+  1320  00029C  0012               	return		;funcret
+  1321  00029E                     __end_of_Open2USART:
+  1322                           	opt stack 0
+  1323  0000                     tblptru	equ	0xFF8
+  1324                           tblptrh	equ	0xFF7
+  1325                           tblptrl	equ	0xFF6
+  1326                           tablat	equ	0xFF5
+  1327                           prodh	equ	0xFF4
+  1328                           prodl	equ	0xFF3
+  1329                           postinc0	equ	0xFEE
+  1330                           wreg	equ	0xFE8
+  1331                           indf2	equ	0xFDF
+  1332                           fsr2h	equ	0xFDA
+  1333                           fsr2l	equ	0xFD9
+  1334                           status	equ	0xFD8
+  1335                           tblptru	equ	0xFF8
+  1336                           tblptrh	equ	0xFF7
+  1337                           tblptrl	equ	0xFF6
+  1338                           tablat	equ	0xFF5
+  1339                           prodh	equ	0xFF4
+  1340                           prodl	equ	0xFF3
+  1341                           postinc0	equ	0xFEE
+  1342                           wreg	equ	0xFE8
+  1343                           indf2	equ	0xFDF
+  1344                           fsr2h	equ	0xFDA
+  1345                           fsr2l	equ	0xFD9
+  1346                           status	equ	0xFD8
+  1347                           
+  1348                           	psect	rparam
+  1349  0000                     tblptru	equ	0xFF8
+  1350                           tblptrh	equ	0xFF7
+  1351                           tblptrl	equ	0xFF6
+  1352                           tablat	equ	0xFF5
+  1353                           prodh	equ	0xFF4
+  1354                           prodl	equ	0xFF3
+  1355                           postinc0	equ	0xFEE
+  1356                           wreg	equ	0xFE8
+  1357                           indf2	equ	0xFDF
+  1358                           fsr2h	equ	0xFDA
+  1359                           fsr2l	equ	0xFD9
+  1360                           status	equ	0xFD8
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         73
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     17      90
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          176      0       0
+
+Pointer List with Targets:
+
+    u8getch@error	PTR unsigned char  size(2) Largest target is 1
+		 -> u8GetCodeLen@err(COMRAM[1]), u8GetDataBlock@err(COMRAM[1]), main@err(COMRAM[1]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_u8GetDataBlock
+    _vEraseFlash->_vEraseBlock
+    _u8GetDataBlock->_u8getch
+    _u8GetCodeLen->_u8getch
+    _init->_Open2USART
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 8     8      0    2184
+                                              9 COMRAM     8     8      0
+                               _init
+                              _putch
+                       _u8GetCodeLen
+                     _u8GetDataBlock
+                            _u8getch
+                        _vEraseFlash
+                   _vWriteFlashBlock
+ ---------------------------------------------------------------------------------
+ (1) _vWriteFlashBlock                                     6     1      5     263
+                                              0 COMRAM     6     1      5
+ ---------------------------------------------------------------------------------
+ (1) _vEraseFlash                                          0     0      0     119
+                        _vEraseBlock
+ ---------------------------------------------------------------------------------
+ (2) _vEraseBlock                                          4     0      4     119
+                                              0 COMRAM     4     0      4
+ ---------------------------------------------------------------------------------
+ (1) _u8GetDataBlock                                       4     4      0     570
+                                              5 COMRAM     4     4      0
+                              _putch
+                            _u8getch
+ ---------------------------------------------------------------------------------
+ (1) _u8GetCodeLen                                         3     3      0     456
+                                              5 COMRAM     3     3      0
+                              _putch
+                            _u8getch
+ ---------------------------------------------------------------------------------
+ (1) _u8getch                                              5     3      2     325
+                                              0 COMRAM     5     3      2
+ ---------------------------------------------------------------------------------
+ (2) _putch                                                1     1      0      15
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _init                                                 0     0      0     273
+                         _Open2USART
+ ---------------------------------------------------------------------------------
+ (2) _Open2USART                                           3     1      2     273
+                                              0 COMRAM     3     1      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _init
+     _Open2USART
+   _putch
+   _u8GetCodeLen
+     _putch
+     _u8getch
+   _u8GetDataBlock
+     _putch
+     _u8getch
+   _u8getch
+   _vEraseFlash
+     _vEraseBlock
+   _vWriteFlashBlock
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             EAF      0       0      35        0.0%
+BITBANK13          100      0       0      31        0.0%
+BANK13             100      0       0      32        0.0%
+BITBANK12          100      0       0      29        0.0%
+BANK12             100      0       0      30        0.0%
+BITBANK11          100      0       0      27        0.0%
+BANK11             100      0       0      28        0.0%
+BITBANK10          100      0       0      25        0.0%
+BANK10             100      0       0      26        0.0%
+BITBANK9           100      0       0      23        0.0%
+BANK9              100      0       0      24        0.0%
+BITBANK8           100      0       0      21        0.0%
+BANK8              100      0       0      22        0.0%
+BITBANK7           100      0       0      19        0.0%
+BANK7              100      0       0      20        0.0%
+BITBANK6           100      0       0      17        0.0%
+BANK6              100      0       0      18        0.0%
+BITBANK5           100      0       0      15        0.0%
+BANK5              100      0       0      16        0.0%
+BITBANK4           100      0       0      13        0.0%
+BANK4              100      0       0      14        0.0%
+BITBANK3           100      0       0      11        0.0%
+BANK3              100      0       0      12        0.0%
+BITBANK2           100      0       0       9        0.0%
+BANK2              100      0       0      10        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       8        0.0%
+BITBANK14           B0      0       0      33        0.0%
+BANK14              B0      0       0      34        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITCOMRAM           5F      0       0       0        0.0%
+COMRAM              5F     11      5A       1       94.7%
+BITSFR_2             0      0       0      40        0.0%
+SFR_2                0      0       0      40        0.0%
+BITSFR_1             0      0       0      40        0.0%
+SFR_1                0      0       0      40        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      5A       6        0.0%
+DATA                 0      0      5A       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
+Symbol Table                                                                                   Sat Apr 11 15:29:21 2020
+
+                             l82 02C0                               l76 03F8  
+                   __CFG_CP0$OFF 000000                              l110 014C  
+                            l104 006C                              l141 0262  
+                            l118 01D4                              l143 026E  
+                            l146 0282                              l148 028E  
+                            l149 0290                              l950 0164  
+                            l970 0252                              l954 0172  
+                            l938 013C                              l990 0286  
+                            l982 0272                              l974 025A  
+                            l966 0248                              l986 027A  
+                            l978 0266                              u527 0346  
+                            u537 0356                              u547 0166  
+                            prod 000FF3                              wreg 000FE8  
+                   __CFG_IESO$ON 000000                       _TXSTA2bits 000FA8  
+                           l1102 0340                             l1032 0194  
+                           l1026 0128                             l1018 00F8  
+                           l1060 02EE                             l1036 01AC  
+                           l1116 0390                             l1108 0370  
+                           l1062 02F6                             l1126 03CC  
+                           l1064 02FA                             l1080 0200  
+                           l1066 0306                             l1084 021A  
+                           l1094 031C               __CFG_WPFP$PAGE_127 000000  
+                    main@counter 0058                             _main 030C  
+                           _init 00A4                             fsr2h 000FDA  
+                           indf2 000FDF                             fsr2l 000FD9  
+                           prodl 000FF3                             start 0000  
+               _vWriteFlashBlock 01D6                     ___param_bank 000010  
+                          EECON1 000FA6                            EECON2 000FA7  
+                          INTCON 000FF2                    __CFG_PLLDIV$4 000000  
+                          ?_main 004A                            ?_init 004A  
+                __end_of_u8getch 0184                            _TX2IF 007D24  
+                          _RPOR3 000EC3                            _TRISA 000F92  
+                          _TRISB 000F93                   __CFG_FCMEN$OFF 000000  
+              u8GetDataBlock@err 0052                       _u32CodeLen 0046  
+vWriteFlashBlock@u8FlashBlockLen 004E                            _putch 0062  
+                          status 000FD8          __CFG_DSWDTOSC$INTOSCREF 000000  
+                __initialization 0072                     __end_of_main 0400  
+                   __end_of_init 00EA                       _Open2USART 0236  
+               main@datablocklen 005A                           ??_main 0053  
+                         ??_init 004D                    __activetblptr 000000  
+                 _u8GetDataBlock 029E                           _EECON2 000FA7  
+                         _ANCON0 000F48                           _ANCON1 000F49  
+                         ?_putch 004A                   __CFG_WDTEN$OFF 000000  
+                         _TABLAT 000FF5             __size_of_vEraseBlock 0020  
+                         _RCREG2 000FAA             __size_of_vEraseFlash 0052  
+                         _RCSTA2 000F9C                           _SPBRG2 000FAB  
+                 __CFG_WPCFG$OFF 000000                           _TXREG2 000FA9  
+                         _TXSTA2 000FA8                   __CFG_WPDIS$OFF 000000  
+                 __CFG_XINST$OFF 000000                   __CFG_STVREN$ON 000000  
+                      ??_u8getch 004C                           clear_0 0078  
+                __CFG_CLKOEC$OFF 000000                           main@ch 0057  
+     u8GetDataBlock@datablocklen 0051           __end_of_u8GetDataBlock 030C  
+                         putch@c 004A                  _currentSysState 0045  
+                __CFG_DSBOREN$ON 000000             __CFG_LS48MHZ$SYS48X8 000000  
+                     __accesstop 0060          __end_of__initialization 007E  
+                  ___rparam_used 000001                  __CFG_IOL1WAY$ON 000000  
+           __CFG_WPEND$PAGE_WPFP 000000                   __pcstackCOMRAM 004A  
+                __CFG_DSWDTEN$ON 000000                    __end_of_putch 0072  
+                __CFG_DSWDTPS$G2 000000                      ?_Open2USART 004A  
+                __CFG_OSC$INTOSC 000000         __end_of_vWriteFlashBlock 0236  
+                ?_u8GetDataBlock 004A                          ??_putch 004A  
+                   u8getch@error 004A                    ?_u8GetCodeLen 004A  
+                        _TBLPTRH 000FF7                          _TBLPTRL 000FF6  
+                        _TBLPTRU 000FF8                          _SPBRGH2 000F7D  
+                        _RPINR16 000EF7                 __CFG_CFGPLLEN$ON 000000  
+            __size_of_Open2USART 0068                   ??_u8GetCodeLen 004F  
+                        __Hparam 0000                          __Lparam 0000  
+                        _u8getch 0134                          _address 0041  
+                        __pcinit 0072                          __ramtop 0F00  
+                        __ptext0 030C                          __ptext1 01D6  
+                        __ptext2 0184                          __ptext3 0084  
+                        __ptext4 029E                          __ptext5 00EA  
+                        __ptext6 0134                          __ptext7 0062  
+                        __ptext8 00A4                          __ptext9 0236  
+               Open2USART@config 004C                          main@err 0059  
+           end_of_initialization 007E                    u8GetCodeLen@j 0051  
+                        postinc0 000FEE                 __CFG_CPUDIV$OSC1 000000  
+                  ??_vEraseBlock 004E                    ??_vEraseFlash 004E  
+              __CFG_SOSCSEL$HIGH 000000              __CFG_MSSP7B_EN$MSK7 000000  
+                      _FlashData 0001                     ??_Open2USART 004C  
+               u8GetDataBlock@ch 0050                 ??_u8GetDataBlock 004F  
+           __end_of_u8GetCodeLen 0134              start_initialization 0072  
+              ?_vWriteFlashBlock 004A                vWriteFlashBlock@i 004F  
+             ??_vWriteFlashBlock 004F             vWriteFlashBlock@addr 004A  
+            __end_of_vEraseBlock 00A4              __end_of_vEraseFlash 01D6  
+             __end_of_Open2USART 029E                __CFG_ADCSEL$BIT12 000000  
+                    __pbssCOMRAM 0001                        u8getch@ch 004C  
+                vEraseBlock@addr 004A                         ?_u8getch 004A  
+           __CFG_RTCOSC$T1OSCREF 000000                      _vEraseBlock 0084  
+                    _vEraseFlash 0184                   __size_of_putch 0010  
+                Open2USART@spbrg 004A                         _LATAbits 000F89  
+                       _PIE3bits 000FA3                         _PIR3bits 000FA4  
+               __CFG_WDTPS$32768 000000            __size_of_u8GetCodeLen 004A  
+                u8GetDataBlock@j 004F                         __Hrparam 0000  
+                   _u8GetCodeLen 00EA                         __Lrparam 0000  
+               __size_of_u8getch 0050                  u8GetCodeLen@err 0050  
+                       u8getch@i 004D                    __size_of_main 00F4  
+                  __size_of_init 0046        __size_of_vWriteFlashBlock 0060  
+                     _RCSTA2bits 000F9C                       _OSCCONbits 000FD3  
+                     _PPSCONbits 000EBF                     ?_vEraseBlock 004A  
+                   ?_vEraseFlash 004A          __size_of_u8GetDataBlock 006E  
